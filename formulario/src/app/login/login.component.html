@@ -1,0 +1,78 @@
+<mat-tab-group>
+  <mat-tab label="Cadastrar Login">
+    <form #formLoginI="ngForm" (ngSubmit)=onSubmit(formLoginI)>
+      <div class="form-group">
+        <!-- <label for="loginNome">Digite Nome</label> -->
+        <input type="text" class="form-control" id="loginNome" placeholder="Cadastrar Acesso" name="acesso" ngModel onfocus="this.value='';"
+          required>
+      </div>
+      <div class="form-group">
+        <!-- <label for="loginInputPassword1">Senha de acesso</label> -->
+        <input type="password" class="form-control" id="logintPassword" placeholder="Cadastrar Senha" name="senha" ngModel onfocus="this.value='';"
+          required>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!formLoginI.form.valid">Cadastrar</button>
+    </form>
+  </mat-tab>
+
+
+  <mat-tab label="Editar Login">
+    <form #formLoginE="ngForm" (ngSubmit)=onEdit(formLoginE)>
+      <div class="form-group">
+        <!-- <label for="loginNome">Digite Nome</label> -->
+        <input type="text" class="form-control" id="loginNome" placeholder="Editar Acesso" name="acesso" ngModel onfocus="this.value='';"
+          required>
+      </div>
+      <div class="form-group">
+        <!-- <label for="loginInputPassword1">Senha Atual</label> -->
+        <input type="password" class="form-control" id="logintPassword" placeholder="Senha Atual" name="senha" ngModel onfocus="this.value='';"
+          required>
+      </div>
+<p></p>
+      <div class="form-group">
+        <label for="loginNome2">Digite novos Acessos</label>
+        <input type="text" class="form-control" id="loginNome2" placeholder="Novo Acesso" name="acessoN" ngModel onfocus="this.value='';"
+          required>
+      </div>
+      
+        <div class="form-group">
+          <!-- <label for="loginInputPassword2">Nova Senha</label> -->
+          <input type="password" class="form-control" id="logintPasswordN" placeholder="Nova Senha" name="senhaN" ngModel onfocus="this.value='';"
+            required>
+        </div>
+        <button type="submit" class="btn btn-warning" [disabled]="!formLoginE.form.valid">Editar Senha</button>
+    </form>
+  </mat-tab>
+
+
+  <mat-tab label="Remover Login">
+    <form #formLoginD="ngForm" (ngSubmit)=onDelete(formLoginD)>
+      <div class="form-group">
+        <!-- <label for="loginNome">Digite Nome</label> -->
+        <input type="text" class="form-control" id="loginNome" placeholder="Remover Acesso" name="acesso" ngModel onfocus="this.value='';"
+          required>
+      </div>
+      <div class="form-group">
+        <!-- <label for="loginInputPassword1">Senha</label> -->
+        <input type="password" class="form-control" id="logintPassword" placeholder="Senha" name="senha" ngModel onfocus="this.value='';"
+          required>
+      </div>
+      <button type="submit" class="btn btn-danger" [disabled]="!formLoginD.form.valid">Remover</button>
+    </form>
+  </mat-tab>
+
+
+  <mat-tab label="Listar Acessos Login"> 
+      <form #formLoginl="ngForm" (ngSubmit)=onListar()>
+           <button type="submit" class="btn btn-primary">Listar</button>
+           <p></p>
+    <ul>
+      <li *ngFor="let login of listaLogin?.login">
+        ID: {{login.id}}, Nome: {{login.nome}}, Senha: {{login.senha}}
+        
+      </li>
+    </ul>
+
+        </form>
+  </mat-tab>
+</mat-tab-group>
